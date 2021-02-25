@@ -1,37 +1,41 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DeliverContext from '../context/deliver/DeliverContext';
-import Schedule from './Schedule';
 import User from './User';
-
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
+import H1 from './H1';
 
 function UserList() {
-  const { users, getUsers } = useContext(DeliverContext);
+  const { users, keyTask } = useContext(DeliverContext);
+  const [freeDrivers, setFreeDrivers] = useState([]);
+
+  const getFreeDrivers = () => {
+    let arr = [];
+    users.forEach((el) => {
+      if (!el.segment.includes(keyTask)) {
+        arr.push(el);
+      }
+    });
+
+    setFreeDrivers(arr);
+  };
 
   useEffect(() => {
-    getUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getFreeDrivers();
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className="w-full h-screen flex justify-around items-center">
-      <Schedule />
-      <div className="w-1/2 h-screen ">
-        {users.length > 0 ? (
+      <div className="w-1/2 h-auto ">
+        {freeDrivers.length > 0 ? (
           <>
-            <h2 className="text-2xl text-gray-600 text-center my-3 uppercase">
-              Drivers
-            </h2>
-            <SimpleBar style={{ maxHeight: '90vh' }}>
-              <div className="flex flex-wrap">
-                {users.map((item, key) => (
-                  <div className="" key={key}>
-                    <User user={item} index={key} />
-                  </div>
-                ))}
-              </div>
-            </SimpleBar>
+            <H1>Select your driver</H1>
+            <div className="flex flex-wrap">
+              {freeDrivers.map((item, key) => (
+                <div key={key}>
+                  <User user={item} index={key} />
+                </div>
+              ))}
+            </div>
           </>
         ) : null}
       </div>
