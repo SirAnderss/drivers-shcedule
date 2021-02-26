@@ -126,6 +126,12 @@ const DeliverState = (props) => {
           payload: false,
         })
       )
+      .then(() =>
+        dispatch({
+          type: 'SET_KEYTIME',
+          payload: null,
+        })
+      )
       .catch((e) => console.error(e));
   };
 

@@ -5,9 +5,7 @@ import Schedule from './components/Schedule';
 function App() {
   return (
     <DeliverState>
-      <div className="w-full h-screen">
-        <Schedule />
-      </div>
+      <Schedule />
     </DeliverState>
   );
 }

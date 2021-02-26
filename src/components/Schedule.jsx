@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import H1 from './H1';
 import UserList from './UserList';
+import { Loader } from './Loader';
 
 function Schedule() {
   const times = getHours('08:00:00', '20:00:00');
@@ -49,13 +50,13 @@ function Schedule() {
 
     const color = userKeys.includes(key)
       ? filteredUsers.length === users.length
-        ? 'bg-red-600 border-red-700'
-        : 'bg-green-600 border-green-700'
+        ? 'bg-red-400 border-red-500 hover:bg-red-500 hover:border-red-600'
+        : 'bg-green-400 border-green-500 hover:bg-green-500 hover:border-green-600'
       : keyTask
       ? key === keyTask
-        ? 'bg-purple-600 border-purple-700'
-        : 'bg-blue-400 border-blue-500'
-      : 'bg-blue-400 border-blue-500';
+        ? 'bg-purple-400 border-purple-500 hover:bg-purple-500 hover:border-purple-600'
+        : 'bg-blue-400 border-blue-500 hover:bg-blue-500 hover:border-blue-600'
+      : 'bg-blue-400 border-blue-500 hover:bg-blue-500 hover:border-blue-600';
 
     return color;
   };
@@ -88,17 +89,20 @@ function Schedule() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <>
       {!selected ? (
         users.length > 0 ? (
-          <>
+          <div className="md:absolute top-1/2 transform md:-translate-y-1/2">
             <H1>Schedule</H1>
-            <div className="max-w-xs flex flex-col">
+            <p className="text-center text-lg font-medium text-gray-700 py-2">
+              Select your time segment...
+            </p>
+            <div className="w-11/12 mx-auto flex flex-col items-center md:max-h-screen md:justify-center md:flex-row md:flex-wrap">
               {times.map((item, key) => (
                 <div
                   key={key}
                   onClick={() => handleTask(key + 1)}
-                  className={`relative w-72 my-2 py-2 text-center text-lg text-white font-semibold rounded-lg border shadow-xl cursor-pointer transition hover:scale-105 duration-300 delay-150 ${handleColor(
+                  className={`relative w-72 m-2 py-2 text-center text-lg text-white font-semibold rounded-lg border shadow-xl cursor-pointer transform transition hover:scale-105 duration-300 delay-150 ${handleColor(
                     key + 1
                   )}`}
                 >
@@ -113,14 +117,14 @@ function Schedule() {
                 </div>
               ))}
             </div>
-          </>
+          </div>
         ) : (
-          'Loading'
+          <Loader />
         )
       ) : (
         <UserList />
       )}
-    </div>
+    </>
   );
 }
 
