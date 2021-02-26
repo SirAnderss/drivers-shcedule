@@ -4,22 +4,31 @@ import User from './User';
 import H1 from './H1';
 
 function UserList() {
-  const { users, keyTask } = useContext(DeliverContext);
+  const { users, keyTask, setUser } = useContext(DeliverContext);
   const [freeDrivers, setFreeDrivers] = useState([]);
+  const [busyDrivers, setBusyDrivers] = useState([]);
 
-  const getFreeDrivers = () => {
-    let arr = [];
+  const getDrivers = () => {
+    let free = [];
+    let busy = [];
     users.forEach((el) => {
       if (!el.segment.includes(keyTask)) {
-        arr.push(el);
+        free.push(el);
       }
-    });
+      setFreeDrivers(free);
 
-    setFreeDrivers(arr);
+      if (el.segment.includes(keyTask)) {
+        busy.push(el);
+      }
+      setBusyDrivers(busy);
+    });
   };
 
+  const saveDriver = (driver) => setUser(driver, 'save');
+  const removeDriver = (driver) => setUser(driver, 'remove');
+
   useEffect(() => {
-    getFreeDrivers();
+    getDrivers();
     // eslint-disable-next-line
   }, []);
 
@@ -28,11 +37,33 @@ function UserList() {
       <div className="w-1/2 h-auto ">
         {freeDrivers.length > 0 ? (
           <>
-            <H1>Select your driver</H1>
+            <H1>Select your driver to save</H1>
             <div className="flex flex-wrap">
               {freeDrivers.map((item, key) => (
                 <div key={key}>
-                  <User user={item} index={key} />
+                  <User
+                    user={item}
+                    index={key}
+                    action={'save'}
+                    saveDriver={saveDriver}
+                  />
+                </div>
+              ))}
+            </div>
+          </>
+        ) : null}
+        {busyDrivers.length > 0 ? (
+          <>
+            <H1>Select your driver to remove</H1>
+            <div className="flex flex-wrap">
+              {busyDrivers.map((item, key) => (
+                <div key={key}>
+                  <User
+                    user={item}
+                    index={key}
+                    action={'remove'}
+                    removeDriver={removeDriver}
+                  />
                 </div>
               ))}
             </div>

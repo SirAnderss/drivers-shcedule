@@ -1,14 +1,27 @@
-import React, { useContext } from 'react';
-import DeliverContext from '../context/deliver/DeliverContext';
+import React from 'react';
 
-function User({ user, index }) {
-  const { setUser } = useContext(DeliverContext);
+function User({ user, action, removeDriver, saveDriver }) {
+  // const { setUser } = useContext(DeliverContext);
+
+  const handleClick = (data) => {
+    switch (action) {
+      case 'save':
+        saveDriver(data);
+        break;
+      case 'remove':
+        removeDriver(data);
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <>
       <div
         className="flex w-40 h-20 justify-start items-center cursor-pointer m-2"
-        onClick={() => setUser(user)}
+        onClick={() => handleClick(user)}
       >
         <img
           src={user.avatar}

@@ -16,13 +16,16 @@ function Schedule() {
     setTaskkey,
     selected,
     setSelected,
+    getBusyUsers,
   } = useContext(DeliverContext);
 
   const handleTask = (key) => {
     const filteredUsers = filterUsers(key);
 
     if (filteredUsers.length === users.length) {
-      alert('full');
+      setTaskkey(key);
+      getBusyUsers(true);
+      setSelected(true);
     } else {
       setSelected(true);
       setTaskkey(key);

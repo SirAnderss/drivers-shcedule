@@ -1,6 +1,5 @@
 import {
   GET_USERS,
-  GET_FREE_USERS,
   GET_BUSY_USERS,
   SET_USER,
   SET_USER_KEYS,
@@ -30,16 +29,10 @@ const DeliverReducer = (state, action) => {
         selected: payload,
       };
 
-    case GET_FREE_USERS:
-      return {
-        ...state,
-        freeUsers: payload,
-      };
-
     case GET_BUSY_USERS:
       return {
         ...state,
-        busyUsers: payload,
+        busy: payload,
       };
 
     case SET_USER_KEYS:
