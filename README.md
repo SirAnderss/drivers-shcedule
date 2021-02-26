@@ -34,4 +34,4 @@ $ cp .env.example .env
    ```
 7. If everithing it´s ok, Enjoy!!!
 
-### [Live demo](https://SirAnderss..github.io/drivers-shcedule)
+### [Live demo](https://SirAnderss.github.io/drivers-shcedule)
