@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/drivers-shcedule/static/css/main.0202013a.chunk.css",
+    "main.js": "/drivers-shcedule/static/js/main.0ff90f62.chunk.js",
+    "main.js.map": "/drivers-shcedule/static/js/main.0ff90f62.chunk.js.map",
+    "runtime-main.js": "/drivers-shcedule/static/js/runtime-main.b1c31a1b.js",
+    "runtime-main.js.map": "/drivers-shcedule/static/js/runtime-main.b1c31a1b.js.map",
+    "static/js/2.d4cec564.chunk.js": "/drivers-shcedule/static/js/2.d4cec564.chunk.js",
+    "static/js/2.d4cec564.chunk.js.map": "/drivers-shcedule/static/js/2.d4cec564.chunk.js.map",
+    "static/js/3.d4cf45bd.chunk.js": "/drivers-shcedule/static/js/3.d4cf45bd.chunk.js",
+    "static/js/3.d4cf45bd.chunk.js.map": "/drivers-shcedule/static/js/3.d4cf45bd.chunk.js.map",
+    "index.html": "/drivers-shcedule/index.html",
+    "static/css/main.0202013a.chunk.css.map": "/drivers-shcedule/static/css/main.0202013a.chunk.css.map",
+    "static/js/2.d4cec564.chunk.js.LICENSE.txt": "/drivers-shcedule/static/js/2.d4cec564.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1c31a1b.js",
+    "static/js/2.d4cec564.chunk.js",
+    "static/css/main.0202013a.chunk.css",
+    "static/js/main.0ff90f62.chunk.js"
+  ]
+}
