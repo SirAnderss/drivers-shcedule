@@ -21,7 +21,7 @@ $ npm install
 $ cp .env.example .env
 ```
 
-### To store the leaderboard you need to integrate Firebase into the project
+### To store the drivers time:
 
 1. Go to the [Firebase console](https://console.firebase.google.com/).
 2. Create a new project
